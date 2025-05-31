@@ -142,6 +142,39 @@ fooRef() --> Hello, world!
 
 ---
 
+## restorefunction
+
+```lua
+function restorefunction(hooked: function): ()
+```
+
+Replaces the original functionality of `hooked` to before it was hooked.
+
+> ### 🔎 Info
+> If function is not hooked, an error should be returned.
+
+### Parameters
+
+ * `hooked` - The function that was hooked.
+
+### Example
+
+```lua
+function a()
+	return "hi"
+end
+
+print(a()) --> hi
+hookfunction(a, function()
+	return "bye"
+end)
+print(a()) --> bye
+restorefunction(a)
+print(a()) --> hi
+```
+
+---
+
 ## iscclosure
 
 ```lua
