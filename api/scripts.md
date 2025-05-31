@@ -20,7 +20,15 @@ If `includeTables` is false, tables will not be included in the list.
 
 ### Example
 
-**TODO** - Write a real-world example use case.
+```lua
+for _, func in getgc() do
+	if type(func) == "function" and debug.info(func, "n") == "getAmmo" then
+		hookfunction(func, function()
+			return math.huge
+		end)
+	end
+end
+```
 
 ---
 
@@ -41,6 +49,7 @@ if getgenv().__IS_LOADED then
 	error("This script is already loaded!")
 end
 
+print("This will only get ran once!")
 getgenv().__IS_LOADED = true
 ```
 
